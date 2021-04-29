@@ -7,23 +7,30 @@ public class AddDigits {
             return -1;
         }
 
-        String numbers = input
-                .replaceAll("[^\\d]", " ")
-                .trim()
-                .replaceAll(" +", "");
+        String numbers = getNumbers(input);
 
         if (numbers.length() == 0) {
             return 0;
         }
 
         int sum = 0;
+        sum = getSum(numbers, sum);
+        return sum;
+    }
 
+    private int getSum(String numbers, int sum) {
         for (int i = 0; i < numbers.length(); i++) {
             String num = numbers.substring(i, i + 1);
             sum += Integer.parseInt(num);
         }
-
         return sum;
+    }
+
+    private String getNumbers(String input) {
+        return input
+                .replaceAll("[^\\d]", " ")
+                .trim()
+                .replaceAll(" +", "");
     }
 
 }
